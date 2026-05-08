@@ -33,7 +33,7 @@ RUN git clone https://github.com/V4bel/dirtyfrag.git && cd dirtyfrag && gcc -O0 
 # Switch to non-root runtime
 USER 10001
 
-WORKDIR /home/tester
+WORKDIR /home/tester/dirtyfrag
 
 COPY app.py .
 
