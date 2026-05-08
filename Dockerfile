@@ -1,5 +1,8 @@
 FROM ubuntu:24.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+
 RUN apt update && apt install -y \
     python3 \
     python3-pip \
@@ -7,16 +10,24 @@ RUN apt update && apt install -y \
     kmod \
     procps \
     iproute2 \
-    util-linux
+    util-linux \
+    git \
+    gcc \
+    make \
+    libc6-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install flask --break-system-packages
+RUN pip3 install --no-cache-dir flask --break-system-packages
 
 # Create secure non-root user
 RUN useradd -u 10001 -m tester
+
 USER 10001
+
 WORKDIR /home/tester
 
 COPY app.py .
 
 EXPOSE 8080
+
 CMD ["python3", "app.py"]
