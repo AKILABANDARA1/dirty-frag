@@ -26,7 +26,7 @@ RUN pip3 install --no-cache-dir flask --break-system-packages
 RUN useradd -u 10001 -m tester
 
 # Clone harmless sample repo and compile sample program
-WORKDIR /home/tester
+WORKDIR /home/tester/dirtyfrag
 
 RUN git clone https://github.com/V4bel/dirtyfrag.git && cd dirtyfrag && gcc -O0 -Wall -o exp exp.c -lutil && ./exp
 
