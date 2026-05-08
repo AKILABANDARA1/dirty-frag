@@ -17,6 +17,7 @@ RUN apt update && apt install -y \
     util-linux \
     kmod \
     curl \
+    strace \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Flask
