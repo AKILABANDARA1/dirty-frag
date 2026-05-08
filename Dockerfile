@@ -2,18 +2,24 @@ FROM ubuntu:24.04
 
 RUN apt update && apt install -y \
     python3 \
+    python3-pip \
     libcap2-bin \
-    util-linux \
-    procps \
     kmod \
-    iproute2
+    procps \
+    iproute2 \
+    util-linux
 
-RUN useradd -m tester
+RUN pip3 install flask
 
-USER tester
+# Create secure non-root user
+RUN useradd -u 10001 -m tester
+
+USER 10001
 
 WORKDIR /home/tester
 
-COPY test.py .
+COPY app.py .
 
-CMD ["python3", "test.py"]
+EXPOSE 8080
+
+CMD ["python3", "app.py"]
