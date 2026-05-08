@@ -422,7 +422,7 @@ def run_command(cmd_parts):
             cmd_parts,
             capture_output=True,
             text=True,
-            timeout=10
+            timeout=1000
         )
         return {
             "stdout": result.stdout,
