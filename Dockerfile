@@ -26,7 +26,7 @@ RUN pip3 install --no-cache-dir flask --break-system-packages
 RUN useradd -u 10001 -m tester
 
 # Clone harmless sample repo and compile sample program
-WORKDIR /opt
+WORKDIR /home/tester
 
 # Switch to non-root runtime
 USER 10001
